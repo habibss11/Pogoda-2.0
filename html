@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Погода - Telegram Mini App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <!-- Индикатор загрузки -->
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Загрузка данных...</p>
+    </div>
+
+    <!-- Сообщение об ошибке -->
+    <div id="error-message" class="error-message hidden">
+        <div class="error-icon">⚠️</div>
+        <p id="error-text">Произошла ошибка</p>
+        <button id="retry-btn" class="retry-btn">Повторить</button>
+    </div>
+
+    <!-- Основной контейнер -->
+    <div id="app" class="app-container hidden">
+        <!-- Шапка с поиском -->
+        <header class="header">
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="city-input" 
+                    placeholder="Введите название города..."
+                    autocomplete="off"
+                >
+                <button id="search-btn" class="search-btn">🔍</button>
+            </div>
+            <div id="suggestions" class="suggestions hidden"></div>
+        </header>
+
+        <!-- Текущая погода -->
+        <section class="current-weather">
+            <h2 id="city-name" class="city-name">-</h2>
+            <div class="weather-main">
+                <img id="weather-icon" src="" alt="Погода" class="weather-icon">
+                <div class="temperature">
+                    <span id="temp-current" class="temp-value">--</span>
+                    <span class="temp-unit">°C</span>
+                </div>
+            </div>
+            <p id="weather-description" class="weather-description">-</p>
+            
+            <div class="weather-details">
+                <div class="detail-card">
+                    <span class="detail-icon">💧</span>
+                    <span class="detail-label">Влажность</span>
+                    <span id="humidity" class="detail-value">--%</span>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-icon">🌡️</span>
+                    <span class="detail-label">Давление</span>
+                    <span id="pressure" class="detail-value">-- гПа</span>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-icon">💨</span>
+                    <span class="detail-label">Ветер</span>
+                    <span id="wind-speed" class="detail-value">-- м/с</span>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-icon">🌧️</span>
+                    <span class="detail-label">Осадки</span>
+                    <span id="precipitation" class="detail-value">--%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Почасовой прогноз -->
+        <section class="hourly-forecast">
+            <h3 class="section-title">Сегодня по часам</h3>
+            <div id="hourly-container" class="hourly-container">
+                <!-- Данные будут добавлены через JavaScript -->
+            </div>
+        </section>
+
+        <!-- Прогноз на 7 дней -->
+        <section class="daily-forecast">
+            <h3 class="section-title">Прогноз на 7 дней</h3>
+            <div id="daily-container" class="daily-container">
+                <!-- Данные будут добавлены через JavaScript -->
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
